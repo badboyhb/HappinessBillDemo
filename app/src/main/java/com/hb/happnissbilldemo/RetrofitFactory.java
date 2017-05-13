@@ -1,15 +1,24 @@
 package com.hb.happnissbilldemo;
 
+import android.content.Context;
+
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.SecureRandom;
+import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by 译丹 on 2017/5/13.
@@ -17,44 +26,83 @@ import retrofit2.Retrofit;
 
 public class RetrofitFactory {
 
-    private static final RetrofitFactory mRetrofitFactory=new RetrofitFactory();
+    static private final String KEYSTORE_ALIAS = "wildfly";
+    static private final int CERTIFICATE_RESOURCE_ID = R.raw.wildfly;
+    static private final String CERTIFICATE_TYPE = "X.509";
+    static private final String SSL_PROTOCOL = "TLS";
 
-    private Retrofit mRetrofit;
+    static private final String HOST_PROTOCOL = "https";
+    static private final String HOST_NAME = "106.14.199.153";
+    static private final String HOST_PORT = "51343";
+    static private final String HOST_PATH = "happinessbill/rest/";
 
 
-    static RetrofitFactory getInstance(){
-        return mRetrofitFactory;
-    }
-    private RetrofitFactory(){
-        mRetrofit=null;
-    }
+    static private Retrofit mRetrofit = null;
 
-    public Retrofit getRetrofit(){
+    static public Retrofit getRetrofit() {
         return mRetrofit;
     }
 
-    private static SSLSocketFactory getSSLSocketFactory() {
-
+    static public void init(Context ctx) {
         try {
-            CertificateFactory cf = CertificateFactory.getInstance("X.509");
-            KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
-            ks.load(null, null);
-
-            InputStream is = getResources().openRawResource(R.raw.wildfly);
-            try {
-                ks.setCertificateEntry("wildfly", cf.generateCertificate(is));
-            } finally {
-                is.close();
-            }
-
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            trustManagerFactory.init(ks);
-            sslContext.init(null, trustManagerFactory.getTrustManagers(), new SecureRandom());
-            return sslContext.getSocketFactory();
+            SSLSocketFactory ssl = getSSLSocketFactory(ctx);
+            OkHttpClient.Builder client = getHttpClient(ssl);
+            mRetrofit = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(new StringBuilder()
+                            .append(HOST_PROTOCOL).append("://")
+                            .append(HOST_NAME).append(":")
+                            .append(HOST_PORT).append("/")
+                            .append(HOST_PATH)
+                            .toString())
+                    .client(client.build())
+                    .build();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+    }
+
+    static private OkHttpClient.Builder getHttpClient(SSLSocketFactory ssl) {
+        OkHttpClient.Builder client = new OkHttpClient.Builder();
+        client.sslSocketFactory(ssl, new X509TrustManager() {
+            @Override
+            public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+            }
+
+            @Override
+            public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+            }
+
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[0];
+            }
+        });
+        client.hostnameVerifier(new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return hostname.equals(HOST_NAME);
+            }
+        });
+        return client;
+    }
+
+    static private SSLSocketFactory getSSLSocketFactory(Context ctx) throws Exception {
+        CertificateFactory cf = CertificateFactory.getInstance(CERTIFICATE_TYPE);
+        KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
+        ks.load(null, null);
+
+        InputStream is = ctx.getResources().openRawResource(CERTIFICATE_RESOURCE_ID);
+        try {
+            ks.setCertificateEntry(KEYSTORE_ALIAS, cf.generateCertificate(is));
+        } finally {
+            is.close();
+        }
+
+        SSLContext sslContext = SSLContext.getInstance(SSL_PROTOCOL);
+        TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        trustManagerFactory.init(ks);
+        sslContext.init(null, trustManagerFactory.getTrustManagers(), new SecureRandom());
+        return sslContext.getSocketFactory();
     }
 }
