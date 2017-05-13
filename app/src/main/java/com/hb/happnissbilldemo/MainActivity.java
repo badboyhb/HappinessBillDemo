@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.hb.happnissbilldemo.model.Member;
+import com.hb.happnissbilldemo.test.RegisterTest;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,20 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
         RetrofitFactory.init(getApplicationContext());
 
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
-        Call<Member> c = service.lookupMemberById(1);
-        c.enqueue(new Callback<Member>() {
-            @Override
-            public void onResponse(Call<Member> call, Response<Member> response) {
-                mTextMessage.setText(response.body().getEmail());
-            }
-
-            @Override
-            public void onFailure(Call<Member> call, Throwable t) {
-                mTextMessage.setText("ERROR!");
-            }
-        });
+        RegisterTest.test();
     }
 }

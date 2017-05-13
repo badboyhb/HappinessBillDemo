@@ -1,9 +1,11 @@
 package com.hb.happnissbilldemo;
 
-import com.hb.happnissbilldemo.model.Member;
+import com.hb.happnissbilldemo.model.User;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -11,7 +13,7 @@ import retrofit2.http.Path;
  */
 
 public interface HappinessBillService {
-    @GET("members/{id}")
-    Call<Member> lookupMemberById(@Path("id") long id);
+    @PUT("register")
+    Call<User> register(@Body User user);
 }
 

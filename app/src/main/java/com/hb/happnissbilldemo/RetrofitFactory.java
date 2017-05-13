@@ -34,7 +34,7 @@ public class RetrofitFactory {
     static private final String HOST_PROTOCOL = "https";
     static private final String HOST_NAME = "106.14.199.153";
     static private final String HOST_PORT = "51343";
-    static private final String HOST_PATH = "happinessbill/rest/";
+    static private final String HOST_PATH = "happinessbill/rest/hb/";
 
 
     static private Retrofit mRetrofit = null;
