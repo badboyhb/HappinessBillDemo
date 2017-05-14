@@ -1,4 +1,4 @@
-package com.hb.happnissbilldemo.model;
+package com.hb.happnissbilldemo.rest;
 
 /**
  * Created by 译丹 on 2017/5/13.

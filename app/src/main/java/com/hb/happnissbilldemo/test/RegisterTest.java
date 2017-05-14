@@ -4,8 +4,7 @@ import android.util.Log;
 
 import com.hb.happnissbilldemo.HappinessBillService;
 import com.hb.happnissbilldemo.RetrofitFactory;
-import com.hb.happnissbilldemo.model.Member;
-import com.hb.happnissbilldemo.model.User;
+import com.hb.happnissbilldemo.rest.RegisterUser;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,15 +25,15 @@ public class RegisterTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        User user = new User("hb1234", "hb@yinhe.com", "123456789", "hb5678");
+        RegisterUser user = new RegisterUser("hb1234", "hb@yinhe.com", "123456789", "hb5678");
 
-        Call<User> c = service.register(user);
+        Call<RegisterUser> c = service.register(user);
 
         Log.v(LOG_TAG, "register user=" + user.getName());
 
-        c.enqueue(new Callback<User>() {
+        c.enqueue(new Callback<RegisterUser>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<RegisterUser> call, Response<RegisterUser> response) {
                 if (response.code() == HTTP_OK) {
                     Log.v(LOG_TAG, "register user succeed.");
                 } else {
@@ -43,7 +42,7 @@ public class RegisterTest {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<RegisterUser> call, Throwable t) {
                 Log.e(LOG_TAG, "register user FAILED!");
             }
         });

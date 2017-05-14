@@ -1,10 +1,10 @@
-package com.hb.happnissbilldemo.model;
+package com.hb.happnissbilldemo.rest;
 
 /**
  * Created by 译丹 on 2017/5/13.
  */
 
-public class User {
+public class RegisterUser {
 
     private String name;
 
@@ -14,7 +14,7 @@ public class User {
 
     private String password;
 
-    public User(String name,String email,String phoneNumber,String password){
+    public RegisterUser(String name, String email, String phoneNumber, String password){
         this.name=name;
         this.email=email;
         this.phoneNumber=phoneNumber;

@@ -1,12 +1,10 @@
 package com.hb.happnissbilldemo;
 
-import com.hb.happnissbilldemo.model.User;
+import com.hb.happnissbilldemo.rest.RegisterUser;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.PUT;
-import retrofit2.http.Path;
 
 /**
  * Created by 译丹 on 2017/5/13.
@@ -14,6 +12,6 @@ import retrofit2.http.Path;
 
 public interface HappinessBillService {
     @PUT("register")
-    Call<User> register(@Body User user);
+    Call<RegisterUser> register(@Body RegisterUser user);
 }
 
