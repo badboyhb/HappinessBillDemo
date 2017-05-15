@@ -23,6 +23,9 @@ public interface HappinessBillService {
     @POST("changeUserInfo")
     Call<UserInfo> changeUserInfo(@Body UserInfo user);
 
+    @POST("createFamily")
+    Call<UserInfo> createFamily(@Body UserInfo user);
+
     @POST("addRecord")
     Call<Record> addRecord(@Body RestRecord user);
 }

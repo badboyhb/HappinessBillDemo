@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.hb.happnissbilldemo.test.AddRecordTest;
 import com.hb.happnissbilldemo.test.ChangeUserInfoTest;
 import com.hb.happnissbilldemo.test.CheckTest;
+import com.hb.happnissbilldemo.test.CreateFamilyTest;
 import com.hb.happnissbilldemo.test.RegisterTest;
 
 
@@ -49,6 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         RetrofitFactory.init(getApplicationContext());
 
-        AddRecordTest.test();
+        CreateFamilyTest.test();
     }
 }
