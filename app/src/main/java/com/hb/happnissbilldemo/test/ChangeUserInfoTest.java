@@ -14,36 +14,36 @@ import retrofit2.Retrofit;
 import static java.net.HttpURLConnection.HTTP_OK;
 
 /**
- * Created by 译丹 on 2017/5/13.
+ * Created by HB on 2017/5/15.
  */
 
-public class RegisterTest {
-
+public class ChangeUserInfoTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserInfo user = new UserInfo("hb1234", "hb@yinhe.com", "123456789", "hb5678");
+        UserInfo user = new UserInfo("hb1234", "hubo1@21cn.com", "123456789", "zxcvbnm");
+        user.setPassword("zxcvbnm");
 
-        Call<UserInfo> c = service.register(user);
+        Call<UserInfo> c = service.changeUserInfo(user);
 
-        Log.v(LOG_TAG, "register user=" + user.getName());
+        Log.v(LOG_TAG, "changeUserInfo user=" + user.getName());
 
         c.enqueue(new Callback<UserInfo>() {
             @Override
             public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
                 if (response.code() == HTTP_OK) {
-                    Log.v(LOG_TAG, "register user succeed.");
+                    Log.v(LOG_TAG, "check user succeed.");
                 } else {
-                    Log.e(LOG_TAG, "register user FAILED!" + response.code());
+                    Log.e(LOG_TAG, "check user FAILED!" + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<UserInfo> call, Throwable t) {
-                Log.e(LOG_TAG, "register user FAILED!");
+                Log.e(LOG_TAG, "check user FAILED!");
             }
         });
     }

@@ -2,12 +2,27 @@ package com.hb.happnissbilldemo;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -15,6 +30,8 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
+
+import java.lang.reflect.Type;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -48,13 +65,8 @@ public class RetrofitFactory {
             SSLSocketFactory ssl = getSSLSocketFactory(ctx);
             OkHttpClient.Builder client = getHttpClient(ssl);
             mRetrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(new StringBuilder()
-                            .append(HOST_PROTOCOL).append("://")
-                            .append(HOST_NAME).append(":")
-                            .append(HOST_PORT).append("/")
-                            .append(HOST_PATH)
-                            .toString())
+                    .addConverterFactory(GsonConverterFactory.create(getGson()))
+                    .baseUrl(HOST_PROTOCOL + "://" + HOST_NAME + ":" + HOST_PORT + "/" + HOST_PATH)
                     .client(client.build())
                     .build();
         } catch (Exception e) {
@@ -104,5 +116,28 @@ public class RetrofitFactory {
         trustManagerFactory.init(ks);
         sslContext.init(null, trustManagerFactory.getTrustManagers(), new SecureRandom());
         return sslContext.getSocketFactory();
+    }
+
+
+    static Gson getGson() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.setDateFormat("yyyy-MM-dd hh:mm:ss");
+        gsonBuilder.registerTypeAdapter(Timestamp.class, new TimestampTypeAdapter());
+        return gsonBuilder.create();
+    }
+
+    static private class TimestampTypeAdapter
+            implements JsonSerializer<Timestamp>, JsonDeserializer<Timestamp> {
+
+        public JsonElement serialize(Timestamp ts, Type t, JsonSerializationContext jsc) {
+            return new JsonPrimitive(ts.getTime());
+        }
+
+        public Timestamp deserialize(JsonElement json, Type t, JsonDeserializationContext jsc) throws JsonParseException {
+            if (!(json instanceof JsonPrimitive)) {
+                throw new JsonParseException("The date should be a string value");
+            }
+            return new Timestamp(Long.parseLong(json.getAsString()));
+        }
     }
 }
