@@ -11,7 +11,10 @@ import com.hb.happnissbilldemo.test.AddRecordTest;
 import com.hb.happnissbilldemo.test.ChangeUserInfoTest;
 import com.hb.happnissbilldemo.test.CheckTest;
 import com.hb.happnissbilldemo.test.CreateFamilyTest;
+import com.hb.happnissbilldemo.test.GetFamilyInfoTest;
+import com.hb.happnissbilldemo.test.JoinFamilyTest;
 import com.hb.happnissbilldemo.test.RegisterTest;
+import com.hb.happnissbilldemo.test.UnjoinFamilyTest;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -50,6 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         RetrofitFactory.init(getApplicationContext());
 
-        CreateFamilyTest.test();
+        GetFamilyInfoTest.test();
     }
 }

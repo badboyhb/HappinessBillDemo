@@ -2,6 +2,7 @@ package com.hb.happnissbilldemo;
 
 import com.hb.happnissbilldemo.rest.Record;
 import com.hb.happnissbilldemo.rest.RestRecord;
+import com.hb.happnissbilldemo.rest.UserFamily;
 import com.hb.happnissbilldemo.rest.UserInfo;
 
 import retrofit2.Call;
@@ -28,5 +29,14 @@ public interface HappinessBillService {
 
     @POST("addRecord")
     Call<Record> addRecord(@Body RestRecord user);
+
+    @POST("joinFamily")
+    Call<UserFamily> joinFamily(@Body UserFamily uf);
+
+    @POST("unjoinFamily")
+    Call<UserFamily> unjoinFamily(@Body UserFamily uf);
+
+    @POST("getFamilyInfo")
+    Call<UserFamily> getFamilyInfo(@Body UserFamily uf);
 }
 
