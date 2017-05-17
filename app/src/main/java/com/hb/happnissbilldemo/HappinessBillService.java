@@ -1,6 +1,7 @@
 package com.hb.happnissbilldemo;
 
 import com.hb.happnissbilldemo.rest.FamilyMember;
+import com.hb.happnissbilldemo.rest.FamilyType;
 import com.hb.happnissbilldemo.rest.Record;
 import com.hb.happnissbilldemo.rest.RestRecord;
 import com.hb.happnissbilldemo.rest.UserFamily;
@@ -42,5 +43,8 @@ public interface HappinessBillService {
 
     @POST("deleteMember")
     Call<UserFamily> deleteMember(@Body FamilyMember fm);
+
+    @POST("addType")
+    Call<UserFamily> addType(@Body FamilyType ft);
 }
 
