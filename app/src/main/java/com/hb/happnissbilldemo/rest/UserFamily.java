@@ -16,7 +16,7 @@ public class UserFamily {
 
     private String code;
 
-    private String types;
+    private String[] types;
 
     private String[] members;
 
@@ -67,11 +67,11 @@ public class UserFamily {
         this.code = code;
     }
 
-    public String getTypes() {
+    public String[] getTypes() {
         return types;
     }
 
-    public void setTypes(String types) {
+    public void setTypes(String[] types) {
         this.types = types;
     }
 

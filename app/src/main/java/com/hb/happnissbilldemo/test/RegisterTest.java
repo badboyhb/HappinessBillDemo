@@ -25,7 +25,7 @@ public class RegisterTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserInfo user = new UserInfo("hb1234", "hb@yinhe.com", "123456789", "hb5678");
+        UserInfo user = new UserInfo("hb1235", "hb@yinhe.com", "123456789", "hb5678");
 
         Call<UserInfo> c = service.register(user);
 

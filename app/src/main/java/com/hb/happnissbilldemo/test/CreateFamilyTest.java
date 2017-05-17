@@ -24,7 +24,7 @@ public class CreateFamilyTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserInfo user = new UserInfo("hb1235", "", "", "hb5678");
+        UserInfo user = new UserInfo("hb1234", "", "", "hb5678");
 
         Call<UserInfo> c = service.createFamily(user);
 
