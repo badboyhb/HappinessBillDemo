@@ -17,7 +17,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
  * Created by HB on 2017/5/15.
  */
 
-public class CheckTest {
+public class GetUserInfoTest {
 
     static private final String LOG_TAG = "TEST";
 
@@ -25,11 +25,9 @@ public class CheckTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserInfo user = new UserInfo("hb1234", "", "", "hb5678");
+        Call<UserInfo> c = service.getUserInfo("hb1234","hb5678");
 
-        Call<UserInfo> c = service.check(user);
-
-        Log.v(LOG_TAG, "check user=" + user.getName());
+        Log.v(LOG_TAG, "check user= " + "hb1234");
 
         c.enqueue(new Callback<UserInfo>() {
             @Override

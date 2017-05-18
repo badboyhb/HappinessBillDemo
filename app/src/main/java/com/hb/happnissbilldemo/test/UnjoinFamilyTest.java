@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.hb.happnissbilldemo.HappinessBillService;
 import com.hb.happnissbilldemo.RetrofitFactory;
-import com.hb.happnissbilldemo.rest.UserFamily;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,15 +24,13 @@ public class UnjoinFamilyTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserFamily uf = new UserFamily("hb1235", "hb5678", "", "");
+        Call<ResponseBody> c = service.unjoinFamily("hb1238", "hb5678");
 
-        Call<UserFamily> c = service.unjoinFamily(uf);
+        Log.v(LOG_TAG, "unjoinFamily user=" + "hb1238");
 
-        Log.v(LOG_TAG, "unjoinFamily user=" + uf.getUserName());
-
-        c.enqueue(new Callback<UserFamily>() {
+        c.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<UserFamily> call, Response<UserFamily> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == HTTP_OK) {
                     Log.v(LOG_TAG, "unjoinFamily succeed.");
                 } else {
@@ -41,7 +39,7 @@ public class UnjoinFamilyTest {
             }
 
             @Override
-            public void onFailure(Call<UserFamily> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e(LOG_TAG, "unjoinFamily FAILED!");
             }
         });

@@ -6,6 +6,7 @@ import com.hb.happnissbilldemo.HappinessBillService;
 import com.hb.happnissbilldemo.RetrofitFactory;
 import com.hb.happnissbilldemo.rest.UserInfo;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,15 +25,13 @@ public class CreateFamilyTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserInfo user = new UserInfo("hb1235", "", "", "hb5678");
+        Call<ResponseBody> c = service.createFamily("hb1234","hb5678");
 
-        Call<UserInfo> c = service.createFamily(user);
+        Log.v(LOG_TAG, "createFamily user=" + "hb1234");
 
-        Log.v(LOG_TAG, "createFamily user=" + user.getName());
-
-        c.enqueue(new Callback<UserInfo>() {
+        c.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == HTTP_OK) {
                     Log.v(LOG_TAG, "createFamily succeed.");
                 } else {
@@ -41,7 +40,7 @@ public class CreateFamilyTest {
             }
 
             @Override
-            public void onFailure(Call<UserInfo> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e(LOG_TAG, "createFamily FAILED!");
             }
         });

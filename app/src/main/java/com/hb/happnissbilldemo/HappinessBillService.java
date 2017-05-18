@@ -1,50 +1,86 @@
 package com.hb.happnissbilldemo;
 
-import com.hb.happnissbilldemo.rest.FamilyMember;
-import com.hb.happnissbilldemo.rest.FamilyType;
 import com.hb.happnissbilldemo.rest.Record;
-import com.hb.happnissbilldemo.rest.RestRecord;
-import com.hb.happnissbilldemo.rest.UserFamily;
+import com.hb.happnissbilldemo.rest.FamilyInfo;
 import com.hb.happnissbilldemo.rest.UserInfo;
 
+import java.sql.Timestamp;
+import java.util.List;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by 译丹 on 2017/5/13.
  */
 
 public interface HappinessBillService {
-    @PUT("register")
-    Call<UserInfo> register(@Body UserInfo user);
+    @POST("user/{name}")
+    Call<ResponseBody> register(@Path("name") String name
+            , @Query("password") String password
+            , @Query("email") String email
+            , @Query("phonenumber") String phonenumber);
 
-    @POST("check")
-    Call<UserInfo> check(@Body UserInfo user);
+    @GET("user/{name}")
+    Call<UserInfo> getUserInfo(@Path("name") String name
+            , @Query("password") String password);
 
-    @POST("changeUserInfo")
-    Call<UserInfo> changeUserInfo(@Body UserInfo user);
+    @PUT("user/{name}")
+    Call<ResponseBody> changeUserInfo(@Path("name") String name
+            , @Query("password") String password
+            , @Query("newpassword") String newpassword
+            , @Query("email") String email
+            , @Query("phonenumber") String phonenumber);
 
-    @POST("createFamily")
-    Call<UserInfo> createFamily(@Body UserInfo user);
+    @POST("family/{name}")
+    Call<ResponseBody> createFamily(@Path("name") String name
+            , @Query("password") String password);
 
-    @POST("addRecord")
-    Call<Record> addRecord(@Body RestRecord user);
+    @PUT("family/{name}/{username}")
+    Call<ResponseBody> joinFamily(@Path("name") String familyname
+            , @Path("username") String username
+            , @Query("password") String password
+            , @Query("code") String code);
 
-    @POST("joinFamily")
-    Call<UserFamily> joinFamily(@Body UserFamily uf);
+    @PUT("family/{username}")
+    Call<ResponseBody> unjoinFamily(@Path("username") String username
+            , @Query("password") String password);
 
-    @POST("unjoinFamily")
-    Call<UserFamily> unjoinFamily(@Body UserFamily uf);
+    @GET("family/{username}")
+    Call<FamilyInfo> getFamilyInfo(@Path("username") String username
+            , @Query("password") String password);
 
-    @POST("getFamilyInfo")
-    Call<UserFamily> getFamilyInfo(@Body UserFamily uf);
+    @DELETE("family/{name}/{username}")
+    Call<ResponseBody> deleteMember(@Path("name") String parentname
+            , @Path("username") String username
+            , @Query("password") String password);
 
-    @POST("deleteMember")
-    Call<UserFamily> deleteMember(@Body FamilyMember fm);
+    @POST("type/{name}")
+    Call<ResponseBody> addType(@Path("name") String type
+            , @Query("parentname") String parentname
+            , @Query("password") String password);
 
-    @POST("addType")
-    Call<UserFamily> addType(@Body FamilyType ft);
+    @POST("record/{username}")
+    Call<ResponseBody> addRecord(@Path("username") String username
+            , @Query("password") String password
+            , @Query("amount") float amount
+            , @Query("type") String type
+            , @Query("comment") String comment);
+
+    @GET("record/{username}")
+    Call<List<Record>> getRecords(@Path("username") String username
+            , @Query("password") String password
+            , @Query("members") String[] members
+            , @Query("types") String[] types
+            , @Query("start") Timestamp start
+            , @Query("end") Timestamp end
+            , @Query("first") int first
+            , @Query("count") int count);
 }
 

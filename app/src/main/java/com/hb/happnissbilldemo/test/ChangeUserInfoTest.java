@@ -6,6 +6,7 @@ import com.hb.happnissbilldemo.HappinessBillService;
 import com.hb.happnissbilldemo.RetrofitFactory;
 import com.hb.happnissbilldemo.rest.UserInfo;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,25 +25,22 @@ public class ChangeUserInfoTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserInfo user = new UserInfo("hb1234", "hubo1@21cn.com", "123456789", "zxcvbnm");
-        user.setPassword("zxcvbnm");
+        Call<ResponseBody> c = service.changeUserInfo("hb1234", "123456", "hb5678", "a@a.a", null);
 
-        Call<UserInfo> c = service.changeUserInfo(user);
+        Log.v(LOG_TAG, "changeUserInfo user=" + "hb1234");
 
-        Log.v(LOG_TAG, "changeUserInfo user=" + user.getName());
-
-        c.enqueue(new Callback<UserInfo>() {
+        c.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == HTTP_OK) {
-                    Log.v(LOG_TAG, "check user succeed.");
+                    Log.v(LOG_TAG, "changeUserInfo succeed.");
                 } else {
-                    Log.e(LOG_TAG, "check user FAILED!" + response.code());
+                    Log.e(LOG_TAG, "changeUserInfo FAILED!" + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<UserInfo> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e(LOG_TAG, "check user FAILED!");
             }
         });

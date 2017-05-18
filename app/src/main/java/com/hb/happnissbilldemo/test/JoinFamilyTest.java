@@ -4,9 +4,8 @@ import android.util.Log;
 
 import com.hb.happnissbilldemo.HappinessBillService;
 import com.hb.happnissbilldemo.RetrofitFactory;
-import com.hb.happnissbilldemo.rest.UserFamily;
-import com.hb.happnissbilldemo.rest.UserInfo;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,15 +24,13 @@ public class JoinFamilyTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserFamily uf = new UserFamily("hb1236", "hb5678", "hb1234", "34589351");
+        Call<ResponseBody> c = service.joinFamily("hb1234", "hb1235", "hb5678", "10518385");
 
-        Call<UserFamily> c = service.joinFamily(uf);
+        Log.v(LOG_TAG, "joinFamily user=" + "hb1235");
 
-        Log.v(LOG_TAG, "joinFamily user=" + uf.getUserName());
-
-        c.enqueue(new Callback<UserFamily>() {
+        c.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<UserFamily> call, Response<UserFamily> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == HTTP_OK) {
                     Log.v(LOG_TAG, "joinFamily succeed.");
                 } else {
@@ -42,7 +39,7 @@ public class JoinFamilyTest {
             }
 
             @Override
-            public void onFailure(Call<UserFamily> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e(LOG_TAG, "joinFamily FAILED!");
             }
         });

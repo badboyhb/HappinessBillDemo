@@ -1,18 +1,16 @@
 package com.hb.happnissbilldemo.rest;
 
+import java.sql.Timestamp;
+
 /**
  * Created by HB on 2017/5/15.
  */
-
-import java.sql.Timestamp;
 
 public class Record {
 
     private long id;
 
     private String userName;
-
-    private String familyName;
 
     private float amount;
 
@@ -36,14 +34,6 @@ public class Record {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getFamilyName() {
-        return familyName;
-    }
-
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
     }
 
     public float getAmount() {

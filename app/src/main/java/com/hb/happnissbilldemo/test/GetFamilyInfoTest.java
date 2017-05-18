@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.hb.happnissbilldemo.HappinessBillService;
 import com.hb.happnissbilldemo.RetrofitFactory;
-import com.hb.happnissbilldemo.rest.UserFamily;
+import com.hb.happnissbilldemo.rest.FamilyInfo;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,15 +24,13 @@ public class GetFamilyInfoTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        UserFamily uf = new UserFamily("hb1235", "hb5678", "", "");
+        Call<FamilyInfo> c = service.getFamilyInfo("hb1236", "hb5678");
 
-        Call<UserFamily> c = service.getFamilyInfo(uf);
+        Log.v(LOG_TAG, "getFamilyInfo user=" + "hb1234");
 
-        Log.v(LOG_TAG, "getFamilyInfo user=" + uf.getUserName());
-
-        c.enqueue(new Callback<UserFamily>() {
+        c.enqueue(new Callback<FamilyInfo>() {
             @Override
-            public void onResponse(Call<UserFamily> call, Response<UserFamily> response) {
+            public void onResponse(Call<FamilyInfo> call, Response<FamilyInfo> response) {
                 if (response.code() == HTTP_OK) {
                     Log.v(LOG_TAG, "getFamilyInfo succeed.");
                 } else {
@@ -41,7 +39,7 @@ public class GetFamilyInfoTest {
             }
 
             @Override
-            public void onFailure(Call<UserFamily> call, Throwable t) {
+            public void onFailure(Call<FamilyInfo> call, Throwable t) {
                 Log.e(LOG_TAG, "joinFamily FAILED!");
             }
         });

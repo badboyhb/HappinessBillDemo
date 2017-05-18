@@ -4,10 +4,8 @@ import android.util.Log;
 
 import com.hb.happnissbilldemo.HappinessBillService;
 import com.hb.happnissbilldemo.RetrofitFactory;
-import com.hb.happnissbilldemo.rest.Record;
-import com.hb.happnissbilldemo.rest.RestRecord;
-import com.hb.happnissbilldemo.rest.UserInfo;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,15 +24,13 @@ public class AddRecordTest {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         HappinessBillService service = retrofit.create(HappinessBillService.class);
 
-        RestRecord record = new RestRecord("hb1234", "zxcvbnm", 100.5F, "food", "buy an apple");
+        Call<ResponseBody> c = service.addRecord("hb1236", "hb5678", 100.5F, "BBB", "buy an apple6");
 
-        Call<Record> c = service.addRecord(record);
+        Log.v(LOG_TAG, "addRecord user=" + "hb1234");
 
-        Log.v(LOG_TAG, "addRecord user=" + record.getUserName());
-
-        c.enqueue(new Callback<Record>() {
+        c.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<Record> call, Response<Record> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == HTTP_OK) {
                     Log.v(LOG_TAG, "addRecord user succeed.");
                 } else {
@@ -43,7 +39,7 @@ public class AddRecordTest {
             }
 
             @Override
-            public void onFailure(Call<Record> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e(LOG_TAG, "addRecord user FAILED!");
             }
         });

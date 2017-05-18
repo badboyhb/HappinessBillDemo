@@ -10,10 +10,11 @@ import android.widget.TextView;
 import com.hb.happnissbilldemo.test.AddRecordTest;
 import com.hb.happnissbilldemo.test.AddTypeTest;
 import com.hb.happnissbilldemo.test.ChangeUserInfoTest;
-import com.hb.happnissbilldemo.test.CheckTest;
 import com.hb.happnissbilldemo.test.CreateFamilyTest;
 import com.hb.happnissbilldemo.test.DeleteMemberTest;
 import com.hb.happnissbilldemo.test.GetFamilyInfoTest;
+import com.hb.happnissbilldemo.test.GetRecordsTest;
+import com.hb.happnissbilldemo.test.GetUserInfoTest;
 import com.hb.happnissbilldemo.test.JoinFamilyTest;
 import com.hb.happnissbilldemo.test.RegisterTest;
 import com.hb.happnissbilldemo.test.UnjoinFamilyTest;
@@ -55,6 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         RetrofitFactory.init(getApplicationContext());
 
-        AddTypeTest.test();
+        GetRecordsTest.test();
     }
 }
