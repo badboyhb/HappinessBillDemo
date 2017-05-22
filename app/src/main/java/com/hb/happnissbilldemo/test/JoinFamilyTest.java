@@ -21,8 +21,7 @@ public class JoinFamilyTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<ResponseBody> c = service.joinFamily("hb1234", "hb1235", "hb5678", "10518385");
 

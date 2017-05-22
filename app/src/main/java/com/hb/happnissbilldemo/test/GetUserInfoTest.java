@@ -22,8 +22,7 @@ public class GetUserInfoTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<UserInfo> c = service.getUserInfo("hb1234","hb5678");
 

@@ -1,5 +1,6 @@
 package com.hb.happnissbilldemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         RetrofitFactory.init(getApplicationContext());
 
-        GetRecordsTest.test();
+        Intent intent=new Intent(this,LoginActivity.class);
+        startActivity(intent);
     }
 }

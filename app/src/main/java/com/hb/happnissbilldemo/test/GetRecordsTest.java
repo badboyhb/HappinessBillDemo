@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,8 +25,7 @@ public class GetRecordsTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<List<Record>> c = service.getRecords("hb1234", "hb5678"
                 , null, null, new Timestamp(0), new Timestamp(new Date().getTime())

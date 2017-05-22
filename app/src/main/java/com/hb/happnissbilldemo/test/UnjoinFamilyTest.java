@@ -21,8 +21,7 @@ public class UnjoinFamilyTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<ResponseBody> c = service.unjoinFamily("hb1238", "hb5678");
 

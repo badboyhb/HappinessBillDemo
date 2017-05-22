@@ -23,8 +23,7 @@ public class RegisterTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<ResponseBody> c = service.register("hb1236", "hb5678", "hb@yinhe.com", "123456789");
 

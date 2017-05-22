@@ -21,8 +21,7 @@ public class AddRecordTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<ResponseBody> c = service.addRecord("hb1236", "hb5678", 100.5F, "BBB", "buy an apple6");
 

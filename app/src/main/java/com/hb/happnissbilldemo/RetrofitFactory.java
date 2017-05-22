@@ -13,16 +13,13 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -30,8 +27,6 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
-
-import java.lang.reflect.Type;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -53,22 +48,22 @@ public class RetrofitFactory {
     static private final String HOST_PORT = "51343";
     static private final String HOST_PATH = "happinessbill/rest/hb/";
 
+    static private HappinessBillService mRetrofitService = null;
 
-    static private Retrofit mRetrofit = null;
-
-    static public Retrofit getRetrofit() {
-        return mRetrofit;
+    static public HappinessBillService getRetrofitService() {
+        return mRetrofitService;
     }
 
     static public void init(Context ctx) {
         try {
             SSLSocketFactory ssl = getSSLSocketFactory(ctx);
             OkHttpClient.Builder client = getHttpClient(ssl);
-            mRetrofit = new Retrofit.Builder()
+            Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(getGson()))
                     .baseUrl(HOST_PROTOCOL + "://" + HOST_NAME + ":" + HOST_PORT + "/" + HOST_PATH)
                     .client(client.build())
                     .build();
+            mRetrofitService = retrofit.create(HappinessBillService.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -104,11 +99,8 @@ public class RetrofitFactory {
         KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
         ks.load(null, null);
 
-        InputStream is = ctx.getResources().openRawResource(CERTIFICATE_RESOURCE_ID);
-        try {
+        try (InputStream is = ctx.getResources().openRawResource(CERTIFICATE_RESOURCE_ID)) {
             ks.setCertificateEntry(KEYSTORE_ALIAS, cf.generateCertificate(is));
-        } finally {
-            is.close();
         }
 
         SSLContext sslContext = SSLContext.getInstance(SSL_PROTOCOL);
@@ -119,7 +111,7 @@ public class RetrofitFactory {
     }
 
 
-    static Gson getGson() {
+    static private Gson getGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setDateFormat("yyyy-MM-dd hh:mm:ss");
         gsonBuilder.registerTypeAdapter(Timestamp.class, new TimestampTypeAdapter());

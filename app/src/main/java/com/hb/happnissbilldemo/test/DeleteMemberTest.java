@@ -22,8 +22,7 @@ public class DeleteMemberTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<ResponseBody> c = service.deleteMember("hb1234", "hb1236", "hb5678");
 

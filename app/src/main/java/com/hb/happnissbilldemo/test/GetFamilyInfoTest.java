@@ -21,8 +21,7 @@ public class GetFamilyInfoTest {
     static private final String LOG_TAG = "TEST";
 
     static public void test() {
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
-        HappinessBillService service = retrofit.create(HappinessBillService.class);
+        HappinessBillService service = RetrofitFactory.getRetrofitService();
 
         Call<FamilyInfo> c = service.getFamilyInfo("hb1236", "hb5678");
 
