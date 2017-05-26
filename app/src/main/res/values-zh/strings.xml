@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">幸福账本</string>
+    <string name="title_family">家庭</string>
+    <string name="title_records">记录</string>
+    <string name="title_user">我</string>
+    <string name="title_activity_login">登录</string>
+    <string name="title_activity_register">注册</string>
+    <string name="title_activity_main">幸福账本</string>
+
+    <string name="prompt_username">用户名</string>
+
+</resources>
