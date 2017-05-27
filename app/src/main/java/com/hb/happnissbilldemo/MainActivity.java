@@ -9,11 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 
-import com.hb.happnissbilldemo.dummy.DummyContent;
-
-
-public class MainActivity extends AppCompatActivity implements
-        RecordFragment.OnListFragmentInteractionListener, OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
     private int mCurrentFragment;
     RecordFragment mRecordFragment;
@@ -62,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements
 
         mCurrentFragment = R.id.navigation_records;
 
-        mRecordFragment = RecordFragment.newInstance(3);
+        mRecordFragment = RecordFragment.newInstance();
         mUserFragment = UserFragment.newInstance("A", "B");
         mFamilyFragment = FamilyFragment.newInstance("1", "2");
 
@@ -72,11 +68,6 @@ public class MainActivity extends AppCompatActivity implements
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
     }
 
     @Override

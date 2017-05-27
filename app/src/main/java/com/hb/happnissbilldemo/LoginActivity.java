@@ -197,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... params) {
             HappinessBillService service = RetrofitFactory.getRetrofitService();
 
-            Call<UserInfo> c = service.getUserInfo(mName, mPassword);
+            Call<UserInfo> c = service.getUserInfo(mName+"ws", mPassword);
 
             try {
                 Response<UserInfo> r = c.execute();
