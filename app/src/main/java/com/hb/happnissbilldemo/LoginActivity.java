@@ -24,7 +24,6 @@ import com.hb.happnissbilldemo.util.Hash;
 
 import java.io.IOException;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -183,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mName;
         private final String mPassword;
@@ -197,7 +196,7 @@ public class LoginActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... params) {
             HappinessBillService service = RetrofitFactory.getRetrofitService();
 
-            Call<UserInfo> c = service.getUserInfo(mName+"ws", mPassword);
+            Call<UserInfo> c = service.getUserInfo(mName, mPassword);
 
             try {
                 Response<UserInfo> r = c.execute();
