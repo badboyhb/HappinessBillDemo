@@ -14,6 +14,7 @@
     <string name="title_select_param">Select Parameters</string>
     <string name="title_ok">OK</string>
     <string name="title_cancel">Cancel</string>
+    <string name="title_add_record">Add Record</string>
 
     <string name="prompt_username">User Name</string>
     <string name="prompt_phonenumber">Phone Number</string>
@@ -22,6 +23,13 @@
     <string name="prompt_confirmpassword">Confirm Password</string>
     <string name="prompt_sum">Sum</string>
     <string name="prompt_all">All</string>
+    <string name="prompt_amount">Amount</string>
+    <string name="prompt_type">Type</string>
+    <string name="prompt_comment">Comment</string>
+    <string name="prompt_add_record_failed">Add Record Failed</string>
+    <string name="prompt_add_record_succeed">Add Record Succeed</string>
+    <string name="prompt_busy">Busy</string>
+    <string name="prompt_income">Income</string>
 
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
