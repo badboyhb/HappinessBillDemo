@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.Toast;
 
-import com.hb.happnissbilldemo.OnAddRecordListener;
+import com.hb.happnissbilldemo.listener.OnAddRecordListener;
 import com.hb.happnissbilldemo.R;
 
 /**

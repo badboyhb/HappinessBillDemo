@@ -2,6 +2,8 @@ package com.hb.happnissbilldemo;
 
 import android.app.Application;
 
+import com.hb.happnissbilldemo.rest.RetrofitFactory;
+
 /**
  * Created by HB on 2017/5/26.
  */

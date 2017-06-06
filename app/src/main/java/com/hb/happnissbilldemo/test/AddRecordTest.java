@@ -2,14 +2,13 @@ package com.hb.happnissbilldemo.test;
 
 import android.util.Log;
 
-import com.hb.happnissbilldemo.HappinessBillService;
-import com.hb.happnissbilldemo.RetrofitFactory;
+import com.hb.happnissbilldemo.rest.HappinessBillService;
+import com.hb.happnissbilldemo.rest.RetrofitFactory;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 

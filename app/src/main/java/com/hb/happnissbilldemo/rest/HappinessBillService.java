@@ -1,4 +1,4 @@
-package com.hb.happnissbilldemo;
+package com.hb.happnissbilldemo.rest;
 
 import com.hb.happnissbilldemo.rest.Record;
 import com.hb.happnissbilldemo.rest.FamilyInfo;

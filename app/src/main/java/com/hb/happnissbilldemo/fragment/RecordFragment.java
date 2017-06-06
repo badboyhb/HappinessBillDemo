@@ -1,4 +1,4 @@
-package com.hb.happnissbilldemo;
+package com.hb.happnissbilldemo.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,9 +12,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hb.happnissbilldemo.listener.OnAddRecordListener;
+import com.hb.happnissbilldemo.listener.OnParamSelectedListener;
+import com.hb.happnissbilldemo.R;
+import com.hb.happnissbilldemo.rest.RetrofitFactory;
 import com.hb.happnissbilldemo.dialog.AddRecord;
 import com.hb.happnissbilldemo.dialog.SelectParam;
 import com.hb.happnissbilldemo.rest.FamilyInfo;
+import com.hb.happnissbilldemo.rest.HappinessBillService;
 import com.hb.happnissbilldemo.rest.Record;
 
 import java.sql.Timestamp;
@@ -158,13 +163,8 @@ public class RecordFragment extends Fragment implements
     }
 
     private void getFamilyInfo() {
-        mFamilyInfo = null;
-        SharedPreferences sp = getContext().getSharedPreferences("hbd", Context.MODE_PRIVATE);
-        String name = sp.getString("username", "");
-        String password = sp.getString("password", "");
-
         HappinessBillService service = RetrofitFactory.getRetrofitService();
-        Call<FamilyInfo> c = service.getFamilyInfo(name, password);
+        Call<FamilyInfo> c = service.getFamilyInfo(mName, mPassword);
 
         c.enqueue(new Callback<FamilyInfo>() {
             @Override

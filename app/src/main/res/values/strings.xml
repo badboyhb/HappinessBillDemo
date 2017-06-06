@@ -19,7 +19,11 @@
     <string name="prompt_username">User Name</string>
     <string name="prompt_phonenumber">Phone Number</string>
     <string name="prompt_email">Email Address</string>
+    <string name="prompt_family">Family</string>
+    <string name="prompt_parent">Parent</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_oldpassword">Old Password</string>
+    <string name="prompt_newpassword">New Password</string>
     <string name="prompt_confirmpassword">Confirm Password</string>
     <string name="prompt_sum">Sum</string>
     <string name="prompt_all">All</string>
@@ -30,6 +34,9 @@
     <string name="prompt_add_record_succeed">Add Record Succeed</string>
     <string name="prompt_busy">Busy</string>
     <string name="prompt_income">Income</string>
+    <string name="prompt_true">True</string>
+    <string name="prompt_false">False</string>
+    <string name="prompt_change_userinfo">Change</string>
 
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
@@ -50,4 +57,6 @@
     <string name="error_register_succeed">Register Succeed</string>
     <string name="error_login_failed">Login Failed</string>
     <string name="error_login_succeed">Login Succeed</string>
+    <string name="error_change_user_info_succeed">Change User Info Succeed</string>
+    <string name="error_change_user_info_failed">Change User Info Failed</string>
 </resources>

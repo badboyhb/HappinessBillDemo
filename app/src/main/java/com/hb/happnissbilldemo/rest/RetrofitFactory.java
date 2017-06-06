@@ -1,4 +1,4 @@
-package com.hb.happnissbilldemo;
+package com.hb.happnissbilldemo.rest;
 
 import android.content.Context;
 
@@ -11,6 +11,8 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.hb.happnissbilldemo.R;
+import com.hb.happnissbilldemo.rest.HappinessBillService;
 
 import java.io.InputStream;
 import java.lang.reflect.Type;

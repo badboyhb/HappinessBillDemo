@@ -1,4 +1,4 @@
-package com.hb.happnissbilldemo;
+package com.hb.happnissbilldemo.fragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.hb.happnissbilldemo.R;
 import com.hb.happnissbilldemo.rest.Record;
 
 import java.text.DateFormat;

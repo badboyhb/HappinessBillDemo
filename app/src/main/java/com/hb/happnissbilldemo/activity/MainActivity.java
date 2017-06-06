@@ -1,6 +1,5 @@
-package com.hb.happnissbilldemo;
+package com.hb.happnissbilldemo.activity;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,8 +7,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.hb.happnissbilldemo.R;
+import com.hb.happnissbilldemo.fragment.FamilyFragment;
+import com.hb.happnissbilldemo.fragment.RecordFragment;
+import com.hb.happnissbilldemo.fragment.UserFragment;
 
-public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
+
+public class MainActivity extends AppCompatActivity {
 
     private int mCurrentFragment;
     RecordFragment mRecordFragment;
@@ -70,8 +74,4 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

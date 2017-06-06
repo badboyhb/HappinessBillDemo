@@ -22,7 +22,8 @@
                 android:id="@+id/type"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="end" />
         </TableRow>
 
         <TableRow>
@@ -37,7 +38,8 @@
                 android:id="@+id/amount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="end" />
         </TableRow>
 
     </TableLayout>

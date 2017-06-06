@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hb.happnissbilldemo.RecordFragment">
+    tools:context="com.hb.happnissbilldemo.fragment.RecordFragment">
 
     <TableLayout
         android:layout_width="match_parent"
