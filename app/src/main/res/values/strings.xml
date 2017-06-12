@@ -15,6 +15,12 @@
     <string name="title_ok">OK</string>
     <string name="title_cancel">Cancel</string>
     <string name="title_add_record">Add Record</string>
+    <string name="title_join_family">Join Family</string>
+    <string name="title_create_family">Create Family</string>
+    <string name="title_unjoin_family">Unjoin Family</string>
+    <string name="title_logout">Logout</string>
+    <string name="title_add_type">Add Type</string>
+    <string name="title_delete_member">Delete Member</string>
 
     <string name="prompt_username">User Name</string>
     <string name="prompt_phonenumber">Phone Number</string>
@@ -37,6 +43,11 @@
     <string name="prompt_true">True</string>
     <string name="prompt_false">False</string>
     <string name="prompt_change_userinfo">Change</string>
+    <string name="prompt_family_name">Family Name</string>
+    <string name="prompt_family_code">Family Code</string>
+    <string name="prompt_parent_name">Parent Name</string>
+    <string name="prompt_family_members">Family Members</string>
+    <string name="prompt_family_types">Family Types</string>
 
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
@@ -59,4 +70,10 @@
     <string name="error_login_succeed">Login Succeed</string>
     <string name="error_change_user_info_succeed">Change User Info Succeed</string>
     <string name="error_change_user_info_failed">Change User Info Failed</string>
+    <string name="error_get_family_failed">Get Family Info Failed</string>
+    <string name="error_join_family_failed">Join Family Info Failed</string>
+    <string name="error_create_family_failed">Create Family Info Failed</string>
+    <string name="error_unjoin_family_failed">Unjoin Family Failed</string>
+    <string name="error_add_type_failed">Add Type Failed</string>
+    <string name="error_delete_member_failed">Delete Member Failed</string>
 </resources>

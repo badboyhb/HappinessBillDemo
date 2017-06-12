@@ -1,6 +1,7 @@
 package com.hb.happnissbilldemo.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.hb.happnissbilldemo.R;
 import com.hb.happnissbilldemo.activity.LoginActivity;
+import com.hb.happnissbilldemo.activity.MainActivity;
 import com.hb.happnissbilldemo.rest.HappinessBillService;
 import com.hb.happnissbilldemo.rest.RetrofitFactory;
 import com.hb.happnissbilldemo.rest.UserInfo;
@@ -129,6 +131,18 @@ public class UserFragment extends Fragment {
 
         mBtnOk.setOnClickListener(mOkCancelClickListener);
         mBtnCancel.setOnClickListener(mOkCancelClickListener);
+
+        Button btn = (Button) view.findViewById(R.id.logout);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sp = getContext().getSharedPreferences("hbd", Context.MODE_PRIVATE);
+                sp.edit().putString("username", "").putString("password", "").apply();
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
         return view;
     }

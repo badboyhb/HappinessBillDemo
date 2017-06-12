@@ -205,4 +205,10 @@
         android:layout_height="wrap_content"
         android:text="@string/prompt_change_userinfo" />
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_logout" />
+
 </LinearLayout>

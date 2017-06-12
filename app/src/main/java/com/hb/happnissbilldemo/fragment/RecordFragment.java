@@ -171,12 +171,14 @@ public class RecordFragment extends Fragment implements
             public void onResponse(Call<FamilyInfo> call, Response<FamilyInfo> response) {
                 if (response.isSuccessful()) {
                     mFamilyInfo = response.body();
+                } else {
+                    mFamilyInfo = null;
                 }
             }
 
             @Override
             public void onFailure(Call<FamilyInfo> call, Throwable t) {
-
+                mFamilyInfo = null;
             }
         });
     }
