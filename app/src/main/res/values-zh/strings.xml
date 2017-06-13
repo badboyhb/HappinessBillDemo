@@ -14,7 +14,7 @@
     <string name="action_select_members">选择成员</string>
     <string name="action_sign_in">登录</string>
     <string name="action_start_date">开始日期</string>
-    <string name="app_name">幸福账本</string>
+    <string name="app_name">宝葫芦账本</string>
     <string name="error_add_type_failed">增加类型失败</string>
     <string name="error_change_user_info_failed">修改用户信息失败</string>
     <string name="error_change_user_info_succeed">修改用户信息成功</string>
@@ -59,7 +59,7 @@
     <string name="prompt_sum">合计</string>
     <string name="prompt_true">是</string>
     <string name="prompt_type">类型</string>
-    <string name="title_activity_main">幸福账本</string>
+    <string name="title_activity_main">宝葫芦账本</string>
     <string name="title_add_record">新增记录</string>
     <string name="title_add_type">新增类型</string>
     <string name="title_cancel">取消</string>
