@@ -15,6 +15,20 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:padding="@dimen/text_margin"
+        android:text="Programmed by HB" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:padding="@dimen/text_margin"
+        android:text="Designed by LHL" />
+
+    <TextView
         android:id="@+id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
