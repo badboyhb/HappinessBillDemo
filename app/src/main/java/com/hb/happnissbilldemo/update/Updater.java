@@ -159,6 +159,7 @@ public class Updater {
                 if (mLocalVersion >= mVersion.getVersion()) return;
 
                 Intent i = new Intent(ctx, UpdateActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ctx.startActivity(i);
             }
         });
