@@ -11,6 +11,7 @@ import com.hb.happnissbilldemo.R;
 import com.hb.happnissbilldemo.fragment.FamilyFragment;
 import com.hb.happnissbilldemo.fragment.RecordFragment;
 import com.hb.happnissbilldemo.fragment.UserFragment;
+import com.hb.happnissbilldemo.update.Updater;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Updater.getInstance().check(this);
 
         mCurrentFragment = R.id.navigation_records;
 

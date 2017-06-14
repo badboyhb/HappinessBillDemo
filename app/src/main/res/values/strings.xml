@@ -21,6 +21,7 @@
     <string name="title_logout">Logout</string>
     <string name="title_add_type">Add Type</string>
     <string name="title_delete_member">Delete Member</string>
+    <string name="title_software_update">Software Update</string>
 
     <string name="prompt_username">User Name</string>
     <string name="prompt_phonenumber">Phone Number</string>
@@ -48,6 +49,8 @@
     <string name="prompt_parent_name">Parent Name</string>
     <string name="prompt_family_members">Family Members</string>
     <string name="prompt_family_types">Family Types</string>
+    <string name="prompt_new_software">New version software detected, update?</string>
+    <string name="prompt_downloading">Downloading.......</string>
 
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>

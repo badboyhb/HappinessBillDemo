@@ -73,5 +73,8 @@
     <string name="title_select_start_date">选择起始日期</string>
     <string name="title_select_types">选择类型</string>
     <string name="title_unjoin_family">退出家庭</string>
+    <string name="title_software_update">软件升级</string>
+    <string name="prompt_new_software">检测到新软件，是否升级？</string>
+    <string name="prompt_downloading">下载中......</string>
 
 </resources>

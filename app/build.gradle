@@ -7,8 +7,8 @@ android {
         applicationId "com.hb.happnissbilldemo"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 1
-        versionName "0.0.1"
+        versionCode 3
+        versionName "0.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -33,5 +33,6 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.google.android.gms:play-services-plus:10.2.6'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
