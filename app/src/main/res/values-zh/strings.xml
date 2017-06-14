@@ -76,5 +76,6 @@
     <string name="title_software_update">软件升级</string>
     <string name="prompt_new_software">检测到新软件，是否升级？</string>
     <string name="prompt_downloading">下载中......</string>
+    <string name="title_about">关于</string>
 
 </resources>

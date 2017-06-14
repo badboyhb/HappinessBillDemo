@@ -7,8 +7,8 @@ android {
         applicationId "com.hb.happnissbilldemo"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 3
-        versionName "0.1.1"
+        versionCode 4
+        versionName "0.2.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

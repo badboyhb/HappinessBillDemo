@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hb.happnissbilldemo.R;
+import com.hb.happnissbilldemo.activity.AboutActivity;
 import com.hb.happnissbilldemo.activity.LoginActivity;
-import com.hb.happnissbilldemo.activity.MainActivity;
 import com.hb.happnissbilldemo.rest.HappinessBillService;
 import com.hb.happnissbilldemo.rest.RetrofitFactory;
 import com.hb.happnissbilldemo.rest.UserInfo;
@@ -141,6 +141,15 @@ public class UserFragment extends Fragment {
                 Intent i = new Intent(getContext(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
+            }
+        });
+
+        btn = (Button) view.findViewById(R.id.about);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), AboutActivity.class);
+                startActivity(i);
             }
         });
 

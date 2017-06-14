@@ -211,4 +211,10 @@
         android:layout_height="wrap_content"
         android:text="@string/title_logout" />
 
+    <Button
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_about" />
+
 </LinearLayout>

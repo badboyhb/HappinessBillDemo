@@ -29,7 +29,6 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/title_activity_main" />
-
         <activity
             android:name=".activity.UpdateActivity"
             android:label="@string/title_software_update" />
@@ -44,6 +43,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+        <activity android:name=".activity.AboutActivity"></activity>
     </application>
 
 </manifest>
