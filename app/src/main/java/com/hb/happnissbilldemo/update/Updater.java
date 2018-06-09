@@ -50,8 +50,8 @@ public class Updater {
     static private final String SSL_PROTOCOL = "TLS";
 
     static private final String HOST_PROTOCOL = "https";
-    static private final String HOST_NAME = "106.14.199.153";
-    static private final String HOST_PORT = "51343";
+    static private final String HOST_NAME = "hubo-hb.oicp.io";
+    static private final String HOST_PORT = "38214";
     static private final String HOST_PATH = "download/android/HappinessBillDemo/";
 
     static private final String VERSION_FILE_NAME = "version.json";
