@@ -46,8 +46,8 @@ public class RetrofitFactory {
     static private final String SSL_PROTOCOL = "TLS";
 
     static private final String HOST_PROTOCOL = "https";
-    static private final String HOST_NAME = "hubo-hb.oicp.io";
-    static private final String HOST_PORT = "38214";
+    static private final String HOST_NAME = "hubo-hb.vicp.io";
+    static private final String HOST_PORT = "12496";
     static private final String HOST_PATH = "happinessbill/rest/hb/";
 
     static private HappinessBillService mRetrofitService = null;
